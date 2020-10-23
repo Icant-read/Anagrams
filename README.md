@@ -1,20 +1,12 @@
 # Anagrams
 Comp Sci III K Project
 
-
-
-
-
-
-
-
-
 package setMaps;
-
 import java.util.Set;
 import java.util.TreeSet;
-
 public class Anagrams {
+
+
 	private static TreeSet<String> dict;
 	private static TreeSet<String> answers;
 	public Anagrams(){
