@@ -4,6 +4,7 @@ package setMaps;
 
 import java.util.ArrayList;
 import java.util.Set;
+import java.util.TreeMap;
 import java.util.TreeSet;
 
 public class Anagrams2ElectricBoogaloo {
@@ -37,19 +38,17 @@ public class Anagrams2ElectricBoogaloo {
 			bob++;
 		}
 		for(int y=0;y<ans.length;y++) {
-			System.out.println(ans[y]);
+			System.out.print(ans[y] + " ");
 		}
 		//make a method that gets all combinations of strings within String[] answers
 		mixArray(ans);
 		//print out all combinations that have the same letters as phrase
 		//AND that don't have more words in them than max
-		System.out.println(answers2);
-		
 		return answers2.size();
 	}
 	
 	public void mixArray(String[] array) {
-		//this method must mix the array into every possible order and call recurArray for all of them
+		//Kalen
 		
 	}
 	
@@ -73,8 +72,41 @@ public class Anagrams2ElectricBoogaloo {
 	}
 	
 	public boolean areSame(String a, String b) {
-		//returns whether the strings have the same characters
-		return false;
+		//Brianna
+		TreeMap<String, Integer> amap;
+		amap=new TreeMap<String, Integer>();
+		for(int x=0;x<a.length();x++) {
+			if(amap.get(a.substring(x,x+1))==null) {
+				amap.put(a.substring(x,x+1),1);
+			}
+			else {
+				amap.put(a.substring(x,x+1),amap.get(a.substring(x,x+1)));
+			}
+		}
+		
+		TreeMap<String, Integer> bmap;
+		bmap=new TreeMap<String, Integer>();
+		for(int y=0;y<b.length();y++) {
+			if(bmap.get(b.substring(y,y+1))==null) {
+				bmap.put(b.substring(y,y+1),1);
+			}
+			else {
+				bmap.put(b.substring(y,y+1),amap.get(b.substring(y,y+1)));
+			}
+		}
+		
+		for(int z=0;z<a.length();z++) {
+			String str=a.substring(z,z+1);
+			if(bmap.get(str)!=null) {
+				if(bmap.get(str)!=amap.get(str)) {
+					return false;
+				}
+			}
+			else {
+				return false;
+			}
+		}
+		return true;
 	}
 	
 	
