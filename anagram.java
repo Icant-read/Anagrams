@@ -100,10 +100,9 @@ public class Anagrams2ElectricBoogaloo {
 				bmap.put(b.substring(y,y+1),1);
 			}
 			else {
-				bmap.put(b.substring(y,y+1),amap.get(b.substring(y,y+1))+1);
+				bmap.put(b.substring(y,y+1),bmap.get(b.substring(y,y+1))+1);
 			}
 		}
-		
 		for(int z=0;z<a.length();z++) {
 			String str=a.substring(z,z+1);
 			if(bmap.get(str)!=null) {
@@ -115,6 +114,7 @@ public class Anagrams2ElectricBoogaloo {
 				return false;
 			}
 		}
+		
 		for(int z=0;z<b.length();z++) {
 			String str=b.substring(z,z+1);
 			if(amap.get(str)!=null) {
@@ -126,6 +126,7 @@ public class Anagrams2ElectricBoogaloo {
 				return false;
 			}
 		}
+		
 		return true;
 	}
 	
