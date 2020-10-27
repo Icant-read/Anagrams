@@ -19,9 +19,13 @@ public class Anagrams2ElectricBoogaloo {
 		answers2=new TreeSet<ArrayList<String>>();
 		phrase="";
 	}
-	public int findAnagrams(String phrase, int max, TreeSet<String> dictionary) {
+	public int findAnagrams(String p, int max, TreeSet<String> dictionary) {
 		//both
-		phrase=phrase;
+		for(int bilbo=0;bilbo<p.length();bilbo++) {
+			if(!(p.substring(bilbo,bilbo+1).equals(" "))) {
+				phrase+=p.substring(bilbo,bilbo+1);
+			}
+		}
 		dict=dictionary;
 		if(phrase.length()>0){
 			if(isDict(phrase)==true){
@@ -40,10 +44,10 @@ public class Anagrams2ElectricBoogaloo {
 		for(int y=0;y<ans.length;y++) {
 			System.out.print(ans[y] + " ");
 		}
-		//make a method that gets all combinations of strings within String[] answers
+		System.out.println();
+
 		mixArray(ans);
-		//print out all combinations that have the same letters as phrase
-		//AND that don't have more words in them than max
+
 		return answers2.size();
 	}
 	
@@ -73,6 +77,7 @@ public class Anagrams2ElectricBoogaloo {
 	
 	public boolean areSame(String a, String b) {
 		//Brianna
+		
 		TreeMap<String, Integer> amap;
 		amap=new TreeMap<String, Integer>();
 		for(int x=0;x<a.length();x++) {
@@ -83,6 +88,7 @@ public class Anagrams2ElectricBoogaloo {
 				amap.put(a.substring(x,x+1),amap.get(a.substring(x,x+1)));
 			}
 		}
+		
 		
 		TreeMap<String, Integer> bmap;
 		bmap=new TreeMap<String, Integer>();
@@ -106,6 +112,17 @@ public class Anagrams2ElectricBoogaloo {
 				return false;
 			}
 		}
+		for(int z=0;z<b.length();z++) {
+			String str=b.substring(z,z+1);
+			if(amap.get(str)!=null) {
+				if(bmap.get(str)!=amap.get(str)) {
+					return false;
+				}
+			}
+			else {
+				return false;
+			}
+		}
 		return true;
 	}
 	
@@ -113,11 +130,11 @@ public class Anagrams2ElectricBoogaloo {
 	
 	static void recur(String str, String ans) { 
 	//recursive method, gets all anagrams - Brianna
-        	if (str.length() == 0) { 
-            		if(isDict(ans)==true) {
-            			answers.add(ans);
-            		}
-        	} 
+        if (str.length() == 0) { 
+            	if(isDict(ans)==true) {
+            		answers.add(ans);
+            	}
+        } 
   
         for (int i = 0; i < str.length(); i++) { 
             char ch = str.charAt(i); 
