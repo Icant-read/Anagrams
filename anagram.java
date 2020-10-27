@@ -47,7 +47,6 @@ public class Anagrams2ElectricBoogaloo {
 		System.out.println();
 
 		mixArray(ans);
-
 		return answers2.size();
 	}
 	
@@ -78,6 +77,10 @@ public class Anagrams2ElectricBoogaloo {
 	public boolean areSame(String a, String b) {
 		//Brianna
 		
+		if(a.length()!=b.length()) {
+			return false;
+		}
+		
 		TreeMap<String, Integer> amap;
 		amap=new TreeMap<String, Integer>();
 		for(int x=0;x<a.length();x++) {
@@ -85,7 +88,7 @@ public class Anagrams2ElectricBoogaloo {
 				amap.put(a.substring(x,x+1),1);
 			}
 			else {
-				amap.put(a.substring(x,x+1),amap.get(a.substring(x,x+1)));
+				amap.put(a.substring(x,x+1),amap.get(a.substring(x,x+1))+1);
 			}
 		}
 		
@@ -97,7 +100,7 @@ public class Anagrams2ElectricBoogaloo {
 				bmap.put(b.substring(y,y+1),1);
 			}
 			else {
-				bmap.put(b.substring(y,y+1),amap.get(b.substring(y,y+1)));
+				bmap.put(b.substring(y,y+1),amap.get(b.substring(y,y+1))+1);
 			}
 		}
 		
