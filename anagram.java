@@ -3,16 +3,17 @@ Comp Sci III K Project
 package setMaps;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 import java.util.TreeMap;
 import java.util.TreeSet;
 
-public class Anagrams2ElectricBoogaloo {
+public class Anagrams {
 	private static TreeSet<String> dict;
 	private static TreeSet<String> answers;
 	private static TreeSet<ArrayList<String>> answers2;
 	private static String phrase;
-	public Anagrams2ElectricBoogaloo(){
+	public Anagrams(){
 		//constructor
 		dict=new TreeSet<String>();
 		answers=new TreeSet<String>();
@@ -46,7 +47,7 @@ public class Anagrams2ElectricBoogaloo {
 		}
 		System.out.println();
 
-		mixArray(ans,0, ans.length-1, max);
+		mixArray(ans, 0, ans.length-1, max);
 		return answers2.size();
 	}
 	
@@ -54,7 +55,9 @@ public class Anagrams2ElectricBoogaloo {
 		//Kalen
 		int i;
 		if(a==b){
-			recurArray(answers2, array, max);
+			ArrayList<String> bob;
+			bob=new ArrayList<String>();
+			recurArray(bob, array, max);
 		}
 		else{
 			for(i=a; i<=b;i++){
