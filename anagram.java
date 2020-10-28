@@ -46,13 +46,31 @@ public class Anagrams2ElectricBoogaloo {
 		}
 		System.out.println();
 
-		mixArray(ans);
+		mixArray(ans,0, ans.length-1, max);
 		return answers2.size();
 	}
 	
-	public void mixArray(String[] array) {
+	public void mixArray(String[] array, int a, int b, int max) {
 		//Kalen
+		int i;
+		if(a==b){
+			recurArray(answers2, array, max);
+		}
+		else{
+			for(i=a; i<=b;i++){
+				swap(array, a, i);
+				mixArray(array,a+1,b, max);
+				swap(array, a, i);
+			}
+		}
 		
+	}
+	
+	public void swap(String[] array, int a, int b){
+		//helper method in mixArray to swap indexes for permutations - Kalen
+		String temp = array[a];
+		array[a]=array[b];
+		array[b]=temp;
 	}
 	
 	public void recurArray(ArrayList<String> building, String[] words, int max) {
