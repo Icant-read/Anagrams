@@ -1,5 +1,3 @@
-# Anagrams
-Comp Sci III K Project
 package setMaps;
 
 import java.util.ArrayList;
@@ -48,6 +46,9 @@ public class Anagrams {
 		System.out.println();
 
 		mixArray(ans, 0, ans.length-1, max);
+		for(String last: answers2) {
+			System.out.println(last);
+		}
 		return answers2.size();
 	}
 	
@@ -87,7 +88,13 @@ public class Anagrams {
 				}
 				if(areSame(phrase, done)) {
 					//answers2.add(build);
-					System.out.println(build);
+					String yay="";
+					for(int whoot=0;whoot<build.size()-1;whoot++) {
+						yay+=build.get(whoot);
+						yay+=" ";
+					}
+					yay+=build.get(build.size()-1);
+					answers2.add(yay);
 				}
 			}
 		}
