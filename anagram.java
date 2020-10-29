@@ -11,13 +11,13 @@ import java.util.TreeSet;
 public class Anagrams {
 	private static TreeSet<String> dict;
 	private static TreeSet<String> answers;
-	private static TreeSet<ArrayList<String>> answers2;
+	private static TreeSet<String> answers2;
 	private static String phrase;
 	public Anagrams(){
 		//constructor
 		dict=new TreeSet<String>();
 		answers=new TreeSet<String>();
-		answers2=new TreeSet<ArrayList<String>>();
+		answers2=new TreeSet<String>();
 		phrase="";
 	}
 	public int findAnagrams(String p, int max, TreeSet<String> dictionary) {
@@ -55,9 +55,9 @@ public class Anagrams {
 		//Kalen
 		int i;
 		if(a==b){
-			ArrayList<String> bob;
-			bob=new ArrayList<String>();
-			recurArray(bob, array, max);
+			//ArrayList<String> bob;
+			//bob=new ArrayList<String>();
+			recurArray(array, max);
 		}
 		else{
 			for(i=a; i<=b;i++){
@@ -75,7 +75,24 @@ public class Anagrams {
 		array[a]=array[b];
 		array[b]=temp;
 	}
-	
+	public void recurArray(String[] words, int max) {
+		ArrayList<String> build;
+		build = new ArrayList<String>();
+		for(int x=0;x<=max;x++) {
+			if(x<words.length) {
+				build.add(words[x]);
+				String done="";
+				for(int y=0;y<build.size();y++) {
+					done+=build.get(y);
+				}
+				if(areSame(phrase, done)) {
+					//answers2.add(build);
+					System.out.println(build);
+				}
+			}
+		}
+	}
+	/*/
 	public void recurArray(ArrayList<String> building, String[] words, int max) {
 		//Brianna
 		String done="";
@@ -84,9 +101,21 @@ public class Anagrams {
 		}
 		if(areSame(phrase,done)==true) {
 			answers2.add(building);
+			System.out.println(building);
 		}
-		if(done.length()<phrase.length() && building.size()<max && words.length>1) {
+		if(done.length()<phrase.length() && building.size()<max && words.length>=1) {
+			// THIS CODE RIGHT HERE OFFICER
 			building.add(words[0]);
+			if(words[0]!=null) {
+				String a=words[0];
+				building.add(words[0]);
+			}
+			ArrayList<String> build;
+			build = new ArrayList<String>();
+			for(int num=0;num<building.size()-1;num++) {
+				build.add(building.get(num));
+			}
+			// THE CODE BETWEEN THESE BREAKS
 			String[] w=new String[words.length-1];
 			for(int y=1;y<words.length;y++) {
 				w[y-1]=words[y];
@@ -94,7 +123,7 @@ public class Anagrams {
 			recurArray(building, w, max);
 		}
 	}
-	
+	/*/
 	public boolean areSame(String a, String b) {
 		//Brianna
 		
